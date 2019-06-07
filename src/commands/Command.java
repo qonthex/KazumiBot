@@ -7,4 +7,5 @@ public interface Command {
     String getCategory();
     String getSmallHelp();
     String getBigHelp();
+    String getName();
 }

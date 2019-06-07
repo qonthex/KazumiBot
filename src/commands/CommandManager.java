@@ -17,7 +17,9 @@ public class CommandManager implements BotSettings {
     private CommandManager() {
     }
 
-    public boolean addComand(String name, Command command) {
+    public boolean addComand(Command command) {
+        String name = command.getName();
+
         if (commandMap.containsKey(name)) {
             return false;
         } else {
@@ -34,6 +36,8 @@ public class CommandManager implements BotSettings {
         String invoke = contentSplitted[0];
 
         if (commandMap.containsKey(invoke)) {
+            content = content.replaceFirst(invoke + " ", "");
+            commandMap.get(invoke).execute(event, content.split(" "));
             return true;
         } else {
             return false;
